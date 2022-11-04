@@ -6,7 +6,15 @@ function Review() {
   return (
     <div className="review">
       <div className="author">
-        <div className="avatar"></div>
+        <div
+          className="avatar"
+          style={{
+            backgroundImage:
+              "url(" +
+              "https://reactlink.com/static/app-assets/images/user/12.jpg" +
+              ")",
+          }}
+        ></div>
 
         <div className="info">
           <div className="name">Susan Smith</div>
@@ -43,12 +51,40 @@ function ReviewCard() {
   );
 }
 
+// ÔN LẠI BÀI CŨ
+
+function Time() {
+  const now = new Date();
+
+  return <p> It's {now.toLocaleDateString()}</p>;
+}
+
+function Hello(props) {
+  console.log(props.children);
+  return (
+    <h1>
+      Hello {props.user.name} {props.children}
+    </h1>
+  );
+}
+
 function App() {
+  const currentUser = {
+    name: "Tuan",
+    age: 23,
+    role: "DEV",
+  };
   return (
     <div className="app">
       <Header />
-
       <ReviewCard />
+      <Hello user={currentUser}>
+        {[
+          <span>Con được thêm</span>,
+          <span>Con được thêm</span>,
+          <span>Con được thêm</span>,
+        ]}
+      </Hello>
     </div>
   );
 }
